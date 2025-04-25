@@ -14,7 +14,6 @@ else ifeq ($(BUILD_TOOL),ant)
 else
 	$(error Invalid BUILD_TOOL specified: '$(BUILD_TOOL)'. Use 'maven' or 'ant'.)
 endif
-	# cd $(TASK) && ant clean jar
 	@mkdir -p $(OUTPUT_DIR)
 	docker build -t hadoop-wordcount-$(TASK) --build-arg TASK=$(TASK) .
 	docker run --rm --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} \

@@ -8,14 +8,12 @@
 <artifactId>wordcount</artifactId>
 <version>1.0-SNAPSHOT</version>
 
-  <!-- Redirect all Maven output (classes, jars, metadata) to 'build/' -->
   <build>
     <directory>build</directory>
     <sourceDirectory>src</sourceDirectory>
     <outputDirectory>build/classes</outputDirectory>
 
     <plugins>
-      <!-- Compiler plugin -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.10.1</version>
@@ -25,7 +23,6 @@
         </configuration>
       </plugin>
 
-      <!-- Shade plugin to create a fat jar -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
@@ -43,7 +40,7 @@
               <finalName>wordcount</finalName>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>HadoopDriver</mainClass> <!-- Change to fully qualified if needed -->
+                  <mainClass>HadoopDriver</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -54,7 +51,6 @@
   </build>
 
   <dependencies>
-    <!-- Lucene -->
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
@@ -66,7 +62,6 @@
       <version>8.11.2</version>
     </dependency>
 
-    <!-- Hadoop (compile only, not included in fat jar) -->
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-common</artifactId>

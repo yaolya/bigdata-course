@@ -20,9 +20,9 @@ public class HadoopDriver extends Configured implements Tool {
         for (int i = 0; i < args.length; i++) {
             System.out.println("arg[" + i + "]: " + args[i]);
         }
-        if (args.length == 0) {
+        if (args.length < 2) {
             ToolRunner.printGenericCommandUsage(System.err);
-            System.err.println("USAGE: hadoop jar ... <input-dir> <output-dir>");
+            System.err.println("Required arguments: <input-dir> <output-dir>");
             System.exit(1);
         }
 
